@@ -733,7 +733,7 @@ public class OVRMainMenu : MonoBehaviour
 	// GUIShowVRVariables
 	void GUIShowVRVariables()
 	{
-		bool SpaceHit = Input.GetKey("space");
+		bool SpaceHit = false;//Input.GetKey("space");
 		if ((OldSpaceHit == false) && (SpaceHit == true))
 		{
 			if(ShowVRVars == true) 

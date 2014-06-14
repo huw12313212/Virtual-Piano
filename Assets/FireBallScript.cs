@@ -36,7 +36,7 @@ public class FireBallScript : MonoBehaviour {
 						return;
 		touched.Add(other);
 
-		Debug.Log ("test");
+		//Debug.Log ("test");
 		//Destroy(other.gameObject);
 
 		MonsterScript monster = other.gameObject.GetComponent<MonsterScript> ();

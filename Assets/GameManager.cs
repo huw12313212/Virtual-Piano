@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
 	public UILabel KillLabel;
 	public UILabel EnemyLabel;
 	public GameObject UIPanel;
+	public FireBallShooter shooter;
 
 	float nextTimer = 5;
 
@@ -40,6 +41,18 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//Debug.Log("hello");
+
+		if (FireBallShooter.MP < FireBallShooter.MP_FULL)
+		{
+			FireBallShooter.MP += FireBallShooter.MP_Revive;
+		} 
+		
+		if (FireBallShooter.MP >= FireBallShooter.MP_FULL) 
+		{
+			FireBallShooter.MP = FireBallShooter.MP_FULL;
+		}
+		shooter.mpSlider.value = FireBallShooter.MP / FireBallShooter.MP_FULL;
 
 		if (WaveLabel != null) 
 		{
