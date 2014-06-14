@@ -21,7 +21,8 @@ public class IdleChanger : MonoBehaviour
 	public float _threshold = 0.5f;				// ランダム判定の閾値
 	public float _interval = 2f;				// ランダム判定のインターバル
 	//private float _seed = 0.0f;					// ランダム判定用シード
-	
+
+	public bool ChangeAnimate = false;
 
 
 	// Use this for initialization
@@ -39,16 +40,17 @@ public class IdleChanger : MonoBehaviour
 	void  Update ()
 	{
 		// ↑キー/スペースが押されたら、ステートを次に送る処理
-		if (Input.GetKeyDown ("up") || Input.GetButton ("Jump")) {
+		if (ChangeAnimate) {
 			// ブーリアンNextをtrueにする
 			anim.SetBool ("Next", true);
+			ChangeAnimate = false;
 		}
 		
 		// ↓キーが押されたら、ステートを前に戻す処理
-				if (Input.GetKeyDown ("down")) {
+		/*		if (Input.GetKeyDown ("down")) {
 			// ブーリアンBackをtrueにする
 			anim.SetBool ("Back", true);
-		}
+		}*/
 		
 		// "Next"フラグがtrueの時の処理
 		if (anim.GetBool ("Next")) {
@@ -74,11 +76,11 @@ public class IdleChanger : MonoBehaviour
 
 	void OnGUI()
 	{
-				GUI.Box(new Rect(Screen.width - 110 , 10 ,100 ,90), "Change Motion");
+				/*GUI.Box(new Rect(Screen.width - 110 , 10 ,100 ,90), "Change Motion");
 				if(GUI.Button(new Rect(Screen.width - 100 , 40 ,80, 20), "Next"))
 					anim.SetBool ("Next", true);
 				if(GUI.Button(new Rect(Screen.width - 100 , 70 ,80, 20), "Back"))
-					anim.SetBool ("Back", true);
+					anim.SetBool ("Back", true);*/
 	}
 
 
