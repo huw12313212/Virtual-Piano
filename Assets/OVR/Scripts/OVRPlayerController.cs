@@ -54,12 +54,12 @@ public class OVRPlayerController : OVRComponent
 	public float Acceleration 	   = 0.1f;
 	public float Damping 		   = 0.15f;
 	public float BackAndSideDampen = 0.5f;
-	public float JumpForce 		   = 0.3f;
+	public float JumpForce 		   = 1.2f;
 	public float RotationAmount    = 1.5f;
 	public float GravityModifier   = 0.379f;
 		
 	private float   MoveScale 	   = 1.0f;
-	private Vector3 MoveThrottle   = Vector3.zero;
+	public Vector3 MoveThrottle   = Vector3.zero;
 	private float   FallSpeed 	   = 0.0f;
 	
 	// Initial direction of controller (passed down into CameraController)
@@ -207,6 +207,8 @@ public class OVRPlayerController : OVRComponent
 		bool moveLeft  	 = false;
 		bool moveRight   = false;
 		bool moveBack    = false;
+		bool jump = false;
+		bool squat = false;
 				
 		MoveScale = 1.0f;
 			
@@ -225,6 +227,8 @@ public class OVRPlayerController : OVRComponent
 		if (Input.GetKey(KeyCode.LeftArrow))  moveLeft 	  = true;
 		if (Input.GetKey(KeyCode.DownArrow))  moveBack 	  = true; 
 		if (Input.GetKey(KeyCode.RightArrow)) moveRight   = true; 
+		//Jump
+		if (Input.GetKey(KeyCode.Space)) jump = true;
 			
 		if ( (moveForward && moveLeft) || (moveForward && moveRight) ||
 			 (moveBack && moveLeft)    || (moveBack && moveRight) )
@@ -253,6 +257,7 @@ public class OVRPlayerController : OVRComponent
 				MoveThrottle += DirXform.TransformDirection(Vector3.left * moveInfluence) * BackAndSideDampen;
 			if (moveRight)
 				MoveThrottle += DirXform.TransformDirection(Vector3.right * moveInfluence) * BackAndSideDampen;
+			if(jump) Jump();
 		}
 			
 		// Rotate

@@ -180,6 +180,12 @@ public class OVRCameraController : OVRComponent
 	{
 		base.Update();		
 		UpdateCameras();
+
+		if (Input.GetKeyDown(KeyCode.LeftControl)) 
+			this.transform.position -= new Vector3(0,.6f,0);
+		if (Input.GetKeyUp(KeyCode.LeftControl))
+			this.transform.position += new Vector3(0,.6f,0);
+
 	}
 		
 	// InitCameraControllerVariables

@@ -26,7 +26,7 @@ public class FireBallShooter : MonoBehaviour {
 	
 
 			if (MP >= FIRE_BALL_MP) {
-				if (Input.GetKeyDown ("space")) {
+				if (Input.GetKeyDown (KeyCode.X)) {
 
 				MP-=FIRE_BALL_MP;
 								GameObject fireBall = GameObject.Instantiate (FireBall) as GameObject;
